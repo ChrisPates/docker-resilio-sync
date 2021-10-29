@@ -1,0 +1,12 @@
+version: "2"
+services:
+  resilio:
+    image: elcrp96/resilio-sync:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./rslsync.conf:/etc/rslsync.conf"
+      - "./rslsync.log:/var/log/rslsync.log"
+      - "./settings/:/settings/"
+      - "/path/to/sync/root/:/resilio/"
+    restart: always
