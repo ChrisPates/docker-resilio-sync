@@ -1,0 +1,10 @@
+{
+    "storage_path" : "/resilio/rslsync/",
+    "directory_root" : "/downloads/",
+
+    "webui" :
+    {
+        "force_https": true,
+        "listen" : "0.0.0.0:8888"
+    }
+}

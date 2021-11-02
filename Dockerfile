@@ -23,7 +23,7 @@ RUN mkdir /root/.gnupg/ && chmod 600 /root/.gnupg && \
 RUN mkdir -p \
       /config \
       /resilio \
-      /data
+      /downloads 
 
 # Cleanup
 RUN apt-get -y autoremove && \
@@ -36,7 +36,7 @@ RUN apt-get -y autoremove && \
 COPY root/ /
 
 EXPOSE 8888 55555
-VOLUME /config /sync
+VOLUME /resilio /config /downloads
 
 ENV CHANGE_CONFIG_DIR_OWNERSHIP="true" \
     HOME="/config"
