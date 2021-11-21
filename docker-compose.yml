@@ -1,12 +1,18 @@
 version: "2"
 services:
   resilio:
+    network_mode: "host"
     image: elcrp96/resilio-sync:latest
+    environment:
+      - PUID=998
+      - PGID=994
+      - TZ=Europe/London
     ports:
       - "8888:8888"
+      - "55555:55555"
     volumes:
-      - "./rslsync.conf:/etc/rslsync.conf"
-      - "./rslsync.log:/var/log/rslsync.log"
-      - "./settings/:/settings/"
-      - "/path/to/sync/root/:/resilio/"
+      - "/mnt/storage/local/resilio/config.json:/etc/rslsync/config.json"
+      - "/mnt/storage/local/resilio/rslsync.log:/var/log/rslsync.log"
+      - "/mnt/storage/sync/:/downloads/"
+      - "/mnt/storage/local/resilio:/resilio/"
     restart: always
