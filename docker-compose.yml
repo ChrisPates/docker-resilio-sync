@@ -11,7 +11,7 @@ services:
       - "8888:8888"
       - "55555:55555"
     volumes:
-      - "/mnt/storage/local/resilio/config.json:/etc/rslsync/config.json"
+      - "/mnt/storage/local/resilio/config.json:/config/sync.json"
       - "/mnt/storage/local/resilio/rslsync.log:/var/log/rslsync.log"
       - "/mnt/storage/sync/:/downloads/"
       - "/mnt/storage/local/resilio:/resilio/"
