@@ -1,18 +1,21 @@
-version: "2"
+version: "3.7"
 services:
   resilio:
+    container_name: resilio
     network_mode: "host"
     image: elcrp96/resilio-sync:latest
     environment:
       - PUID=998
       - PGID=994
       - TZ=Europe/London
+      - dotENV
     ports:
       - "8888:8888"
       - "55555:55555"
     volumes:
+      - "/etc/localtime:/etc/localtime:ro"
       - "/mnt/storage/local/resilio/config.json:/config/sync.json"
       - "/mnt/storage/local/resilio/rslsync.log:/var/log/rslsync.log"
-      - "/mnt/storage/sync/:/downloads/"
       - "/mnt/storage/local/resilio:/resilio/"
-    restart: always
+      - "/mnt/storage/sync/:/downloads/"
+    restart: unless-stopped
